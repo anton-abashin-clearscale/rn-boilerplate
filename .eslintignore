@@ -1,0 +1,7 @@
+__tests__
+android
+fastlane
+ios
+.env
+babel.config.js
+metro.config.js
