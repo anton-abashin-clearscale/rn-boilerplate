@@ -1,0 +1,15 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-tutorialtodo-staging-174022-authRole",
+      "UnauthRoleArn": "arn:aws:iam::829764319075:role/amplify-tutorialtodo-staging-174022-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::829764319075:role/amplify-tutorialtodo-staging-174022-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-tutorialtodo-staging-174022-deployment",
+      "UnauthRoleName": "amplify-tutorialtodo-staging-174022-unauthRole",
+      "StackName": "amplify-tutorialtodo-staging-174022",
+      "StackId": "arn:aws:cloudformation:us-east-1:829764319075:stack/amplify-tutorialtodo-staging-174022/5d1177a0-09e5-11ed-a5db-0e55e2c9e70f",
+      "AmplifyAppId": "d1wuoz62t4xvj0"
+    }
+  }
+}

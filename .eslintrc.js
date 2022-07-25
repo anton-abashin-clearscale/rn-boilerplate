@@ -33,6 +33,6 @@ module.exports = {
     '@typescript-eslint/no-empty-function': ['error', { 'allow': ['arrowFunctions'] }],
     '@typescript-eslint/no-unused-vars': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
-    'filename-rules/match': [2, { '.tsx': 'pascalcase', '.ts': 'pascalcase' }]
+    'filename-rules/match': [2, { '.tsx': 'snakecase', '.ts': 'snakecase' }]
   },
 };
