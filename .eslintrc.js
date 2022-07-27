@@ -21,8 +21,6 @@ module.exports = {
     'no-nested-ternary': 'error',
     'no-console': ['error', { allow: ['warn', 'error'] }],
     'no-undef': 'off',
-    '@typescript-eslint/no-unused-vars': 'off',
-    'no-unused-vars': 'off',
     'react/jsx-curly-brace-presence': ['error', { props: 'never', children: 'never' }],
     'react-native/no-unused-styles': 2,
     'no-param-reassign': 'error',
@@ -31,7 +29,7 @@ module.exports = {
     '@typescript-eslint/no-var-requires': 0,
     'no-empty-function': ['error', { 'allow': ['arrowFunctions'] }],
     '@typescript-eslint/no-empty-function': ['error', { 'allow': ['arrowFunctions'] }],
-    '@typescript-eslint/no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': 2,
     '@typescript-eslint/no-non-null-assertion': 'off',
     'filename-rules/match': [2, { '.tsx': 'snakecase', '.ts': 'snakecase' }]
   },

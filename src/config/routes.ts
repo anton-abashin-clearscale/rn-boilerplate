@@ -1,0 +1,7 @@
+const enum ROUTES {
+  //  MAIN TAB ROUTES
+  CARS_NAVIGATOR = 'CARS_NAVIGATOR',
+  INFO_NAVIGATOR = 'INFO_NAVIGATOR',
+}
+
+export default ROUTES;
