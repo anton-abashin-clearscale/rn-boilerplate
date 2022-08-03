@@ -72,6 +72,52 @@ const CarsScreen = () => {
     }
   }, [ isLocked, setSignature, openPopup, setIsLocked ]);
 
+  const testSimplePrompt = useCallback(async () => {
+    try {
+      const { available, error } = await rnBiometrics.isSensorAvailable();
+      if (available) {
+        const { success, error } = await rnBiometrics.simplePrompt({
+          promptMessage: 'Check biometry',
+          cancelButtonText: 'Decline',
+        });
+
+        if (success) {
+          openPopup({
+            type: 'success',
+            title: 'Verification passed',
+            confirmText: 'Ok',
+            hasConfirmOnly: true,
+          });
+        } else {
+          openPopup({
+            type: 'error',
+            title: 'Verification has failed',
+            description: error,
+            confirmText: 'Ok',
+            hasConfirmOnly: true,
+          });
+        }
+      } else {
+        openPopup({
+          type: 'error',
+          title: 'Biometry not available',
+          description: error,
+          confirmText: 'Ok',
+          hasConfirmOnly: true,
+        });
+      }
+    } catch (error) {
+      setSignature(undefined);
+      openPopup({
+        type: 'error',
+        title: 'Ooops...',
+        description: parseError(error),
+        confirmText: 'Ok',
+        hasConfirmOnly: true,
+      });
+    }
+  }, [ setSignature, openPopup ]);
+
   useEffect(() => {
     const subscription = DataStore.observeQuery(Todo).subscribe((snapshot) => {
       const { items } = snapshot;
@@ -89,13 +135,22 @@ const CarsScreen = () => {
       <Text>
         <Text style={styles.todoHeading}>{item.name}</Text>
       </Text>
-      <TouchableOpacity
-        onPress={handleLock}
-      >
-        {isLocked ? <UnlockIcon color={COLORS.PRIMARY_MAIN} /> : <LockIcon color={COLORS.PRIMARY_MAIN} />}
-      </TouchableOpacity>
+      <View style={styles.controlsContainer}>
+        <TouchableOpacity
+          style={styles.lockButton}
+          onPress={handleLock}
+        >
+          {isLocked ? <UnlockIcon color={COLORS.PRIMARY_MAIN} /> : <LockIcon color={COLORS.PRIMARY_MAIN} />}
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={testSimplePrompt}
+        >
+          <Text style={styles.buttonText}>Prompt</Text>
+        </TouchableOpacity>
+      </View>
     </View>
-  ), [ isLocked, handleLock ]);
+  ), [ isLocked, handleLock, testSimplePrompt ]);
 
   return (
     <View>
@@ -128,9 +183,25 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 2,
   },
+  controlsContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  lockButton: {
+    marginRight: 5,
+  },
   todoHeading: {
     fontSize: 20,
     fontWeight: '600',
+  },
+  buttonText: {
+    color: COLORS.TEXT_LIGHT,
+  },
+  button: {
+    backgroundColor: COLORS.BACKGROUND_PRIMARY,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 5,
   },
 });
 
