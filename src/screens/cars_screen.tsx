@@ -27,95 +27,97 @@ const CarsScreen = () => {
   }, [ signature ]);
 
   const handleLock = useCallback(async () => {
-    try {
-      const { available, error } = await rnBiometrics.isSensorAvailable();
-      if (available) {
-        const payload = `${(new Date()).getTime().toString()} some secure signal`;
-        const { success, signature, error } = await rnBiometrics.createSignature({
-          promptMessage: 'Unlock car',
-          payload: payload,
-        });
+    rnBiometrics.isSensorAvailable()
+      .then(async ({ available, error }) => {
+        if (available) {
+          const payload = `${(new Date()).getTime().toString()} some secure signal`;
+          const { success, signature, error } = await rnBiometrics.createSignature({
+            promptMessage: 'Unlock car',
+            payload: payload,
+          });
 
-        if (success) {
-          setSignature(signature);
-          setIsLocked(!isLocked);
-          // @TODO: send unlock signal to server
+          if (success) {
+            setSignature(signature);
+            setIsLocked(!isLocked);
+            // @TODO: send unlock signal to server
+          } else {
+            setSignature(undefined);
+            openPopup({
+              type: 'error',
+              title: 'Verification has failed',
+              description: error,
+              confirmText: 'Ok',
+              hasConfirmOnly: true,
+            });
+          }
+
         } else {
-          setSignature(undefined);
           openPopup({
             type: 'error',
-            title: 'Verification has failed',
+            title: 'Biometry not available',
             description: error,
             confirmText: 'Ok',
             hasConfirmOnly: true,
           });
         }
-
-      } else {
+      })
+      .catch((error) => {
+        setSignature(undefined);
         openPopup({
           type: 'error',
-          title: 'Biometry not available',
-          description: error,
+          title: 'Ooops...',
+          description: parseError(error),
           confirmText: 'Ok',
           hasConfirmOnly: true,
         });
-      }
-    } catch (error) {
-      setSignature(undefined);
-      openPopup({
-        type: 'error',
-        title: 'Ooops...',
-        description: parseError(error),
-        confirmText: 'Ok',
-        hasConfirmOnly: true,
       });
-    }
   }, [ isLocked, setSignature, openPopup, setIsLocked ]);
 
   const testSimplePrompt = useCallback(async () => {
-    try {
-      const { available, error } = await rnBiometrics.isSensorAvailable();
-      if (available) {
-        const { success, error } = await rnBiometrics.simplePrompt({
-          promptMessage: 'Check biometry',
-          cancelButtonText: 'Decline',
-        });
-
-        if (success) {
-          openPopup({
-            type: 'success',
-            title: 'Verification passed',
-            confirmText: 'Ok',
-            hasConfirmOnly: true,
+    rnBiometrics.isSensorAvailable()
+      .then(async ({ available, error }) => {
+        if (available) {
+          const { success, error } = await rnBiometrics.simplePrompt({
+            promptMessage: 'Check permissions',
+            cancelButtonText: 'Decline',
           });
+
+          if (success) {
+            openPopup({
+              type: 'success',
+              title: 'Verification passed',
+              confirmText: 'Ok',
+              hasConfirmOnly: true,
+            });
+          } else {
+            openPopup({
+              type: 'error',
+              title: 'Verification has failed',
+              description: error,
+              confirmText: 'Ok',
+              hasConfirmOnly: true,
+            });
+          }
         } else {
           openPopup({
             type: 'error',
-            title: 'Verification has failed',
+            title: 'Biometry not available',
             description: error,
             confirmText: 'Ok',
             hasConfirmOnly: true,
           });
         }
-      } else {
+      })
+      .catch((error) => {
+        setSignature(undefined);
         openPopup({
           type: 'error',
-          title: 'Biometry not available',
-          description: error,
+          title: 'Ooops...',
+          description: parseError(error),
           confirmText: 'Ok',
           hasConfirmOnly: true,
         });
-      }
-    } catch (error) {
-      setSignature(undefined);
-      openPopup({
-        type: 'error',
-        title: 'Ooops...',
-        description: parseError(error),
-        confirmText: 'Ok',
-        hasConfirmOnly: true,
       });
-    }
   }, [ setSignature, openPopup ]);
 
   useEffect(() => {

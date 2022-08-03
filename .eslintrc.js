@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  plugins: ['react-native', 'filename-rules'],
+  plugins: ['react-native', 'functional', 'filename-rules'],
   extends: [
     '@react-native-community',
     'eslint:recommended',
@@ -31,6 +31,10 @@ module.exports = {
     '@typescript-eslint/no-empty-function': ['error', { 'allow': ['arrowFunctions'] }],
     '@typescript-eslint/no-unused-vars': 2,
     '@typescript-eslint/no-non-null-assertion': 'off',
+    'functional/immutable-data': 'error',
+    'functional/no-let': 'error',
+    'functional/no-method-signature': 'error',
+    'functional/no-try-statement': 'error',
     'filename-rules/match': [2, { '.tsx': 'snakecase', '.ts': 'snakecase' }]
   },
 };
