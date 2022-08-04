@@ -3,10 +3,9 @@
   "serviceConfiguration": {
     "apiName": "TutorialTODO",
     "serviceName": "AppSync",
-    "gqlSchemaPath": "/tmp/amplify-020e540d-fe4d-4585-aa53-eeffb5e90208/amplify/backend/api/TutorialTODO/schema.graphql",
     "defaultAuthType": {
       "mode": "API_KEY",
-      "keyDescription": "This is an api key",
+      "keyDescription": "api key description",
       "expirationTime": 30
     },
     "additionalAuthTypes": [

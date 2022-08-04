@@ -1,5 +1,6 @@
 {
   "AppSyncApiName": "TutorialTODO",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
-  "DynamoDBEnableServerSideEncryption": false
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthModeLastUpdated": "2022-08-04T11:58:29.771Z"
 }
