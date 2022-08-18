@@ -7,7 +7,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import AuthContextProvider from 'store/auth';
 import { Popup, usePopup } from 'components';
 import { parseError } from 'utils/helpers';
-import RootNavigation from 'navigation/root_navigation';
+import RootNavigation from 'navigation/root';
 
 const rnBiometrics = new ReactNativeBiometrics({ allowDeviceCredentials: false });
 

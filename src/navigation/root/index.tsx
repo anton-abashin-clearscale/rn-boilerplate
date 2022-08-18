@@ -2,8 +2,8 @@ import React from 'react';
 import { Platform, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { BottomTabNavigationOptions, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import CarsScreen from 'screens/cars_screen';
-import InfoScreen from 'screens/info_screen';
+import CarsScreen from 'navigation/root/screens/cars';
+import InfoNavigator from 'navigation/info';
 import ROUTES from 'config/routes';
 import { CarIcon, ToggleIcon } from 'components/icons';
 
@@ -27,10 +27,11 @@ export default function RootNavigation() {
         <Tab.Screen
           name={ROUTES.INFO_NAVIGATOR}
           options={{
-            title: 'Information',
+            title: 'Info',
+            headerShown: false,
             tabBarIcon: ToggleIcon,
           }}
-          component={InfoScreen}
+          component={InfoNavigator}
         />
       </Tab.Navigator>
     </NavigationContainer>

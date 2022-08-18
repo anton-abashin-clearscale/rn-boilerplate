@@ -171,7 +171,7 @@ export default Popup;
 const styles = StyleSheet.create({
   background: {
     alignItems: 'center',
-    backgroundColor: 'rgba(196, 196, 196, 0.7)',
+    backgroundColor: COLORS.BACKGROUND_DARK_TRANSPARENT,
     flex: 1,
     justifyContent: 'center',
   },

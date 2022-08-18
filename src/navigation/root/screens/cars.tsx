@@ -6,7 +6,7 @@ import { Todo } from 'models';
 import COLORS from 'config/colors';
 import { AuthContext } from 'store/auth';
 import { LockIcon, UnlockIcon } from 'components/icons';
-import { usePopup, Popup } from 'components';
+import { usePopup, Popup, Button } from 'components';
 import { parseError } from 'utils/helpers';
 
 const rnBiometrics = new ReactNativeBiometrics({ allowDeviceCredentials: false });
@@ -144,12 +144,7 @@ const CarsScreen = () => {
         >
           {isLocked ? <UnlockIcon color={COLORS.PRIMARY_MAIN} /> : <LockIcon color={COLORS.PRIMARY_MAIN} />}
         </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={testSimplePrompt}
-        >
-          <Text style={styles.buttonText}>Prompt</Text>
-        </TouchableOpacity>
+        <Button title='Prompt' onPress={testSimplePrompt} />
       </View>
     </View>
   ), [ isLocked, handleLock, testSimplePrompt ]);
@@ -195,15 +190,6 @@ const styles = StyleSheet.create({
   todoHeading: {
     fontSize: 20,
     fontWeight: '600',
-  },
-  buttonText: {
-    color: COLORS.TEXT_LIGHT,
-  },
-  button: {
-    backgroundColor: COLORS.BACKGROUND_PRIMARY,
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    borderRadius: 5,
   },
 });
 
