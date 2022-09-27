@@ -344,6 +344,8 @@ PODS:
     - React-Core
   - react-native-encrypted-storage (4.0.2):
     - React-Core
+  - react-native-kaas-sdk (0.1.0):
+    - React-Core
   - react-native-netinfo (9.3.0):
     - React-Core
   - react-native-safe-area-context (4.3.1):
@@ -513,6 +515,7 @@ DEPENDENCIES:
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - react-native-biometrics (from `../node_modules/react-native-biometrics`)
   - react-native-encrypted-storage (from `../node_modules/react-native-encrypted-storage`)
+  - react-native-kaas-sdk (from `../node_modules/react-native-kaas-sdk`)
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
@@ -611,6 +614,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-biometrics"
   react-native-encrypted-storage:
     :path: "../node_modules/react-native-encrypted-storage"
+  react-native-kaas-sdk:
+    :path: "../node_modules/react-native-kaas-sdk"
   react-native-netinfo:
     :path: "../node_modules/@react-native-community/netinfo"
   react-native-safe-area-context:
@@ -706,6 +711,7 @@ SPEC CHECKSUMS:
   React-logger: 1088859f145b8f6dd0d3ed051a647ef0e3e80fad
   react-native-biometrics: 41efcf9c58643eb74f27ed09b6cf3d2cfe2d9c32
   react-native-encrypted-storage: e78d848ce0fb663c2ce306e37921d026809322e6
+  react-native-kaas-sdk: 036dbe1d4ae6f80911676c97de5990476e955bc4
   react-native-netinfo: 129bd99f607a2dc5bb096168f3e5c150fd1f1c95
   react-native-safe-area-context: 6c12e3859b6f27b25de4fee8201cfb858432d8de
   React-perflogger: cb386fd44c97ec7f8199c04c12b22066b0f2e1e0
